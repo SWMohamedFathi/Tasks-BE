@@ -9,6 +9,7 @@ const path = require("path")
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerDocument = require('./swagger.json');
+const { default: mongoose } = require('mongoose');
 require("dotenv").config();
 const port = process.env.PORT;
 const fileStorage = multer.diskStorage({
@@ -55,6 +56,7 @@ app.use((error, req, res, next) => {
     const message = error.message;
     res.status(status).json({ message: message });
   });
+  mongoose.set('strictQuery', true);
 DBConcction(() => {
     app.listen(port)
 })

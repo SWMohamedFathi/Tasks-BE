@@ -28,5 +28,6 @@ const postTask = new schema({
         default:"In-Progress"
     }
 },{timestamps:true})
+mongoose.set('strictQuery', true);
 
 module.exports = mongoose.model('Tasks' , postTask)

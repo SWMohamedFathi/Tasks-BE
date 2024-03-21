@@ -28,5 +28,6 @@ const getUsers = new schema({
         default:"Active"
     }
 },{timestamps:true})
+mongoose.set('strictQuery', true);
 
 module.exports = mongoose.model('User' , getUsers)
